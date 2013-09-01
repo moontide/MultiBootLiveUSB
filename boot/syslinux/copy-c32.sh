@@ -23,7 +23,7 @@ then
 fi
 
 cd "$src_dir"
-find -name "*.c32" -exec cp --preserve -f --parents {} "$dst_dir" \;
+find -name "*.c32" -or -name "*.e32" -or -name "*.e64" -exec cp --preserve -f --parents {} "$dst_dir" \;
 
 for f in chain.c32 gfxboot.c32 hdt.c32 ifcpu64.c32 libcom32.c32 libgpl.c32 liblua.c32 libmenu.c32 libutil.c32 linux.c32 menu.c32 reboot.c32 vesamenu.c32 memdisk
 do
