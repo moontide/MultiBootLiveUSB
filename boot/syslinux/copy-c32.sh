@@ -35,11 +35,15 @@ case "$type" in
 		;;
 esac
 
+# 取绝对路径
+#src_dir=$(realpath "$src_dir")
+#dst_dir=$(reallink -f "$dst_dir")
+dst_dir=$(realpath "$dst_dir")
 cd "$src_dir"
 #find $type/com32 -name "*.c32" -or -name "*.e32" -or -name "*.e64" -exec cp --preserve -f --parents {} "$dst_dir" \;
 
 for f in chain.c32 gfxboot.c32 hdt.c32 ifcpu64.c32 libcom32.c32 libgpl.c32 liblua.c32 libmenu.c32 libutil.c32 linux.c32 menu.c32 reboot.c32 vesamenu.c32 memdisk $extra_files
 do
-	find "$src_dir/$type" -type f -name $f -print -exec cp --preserve -f {} "$dst_dir" \;
+	find "$type" -type f -name $f -print -exec cp --preserve -f {} "$dst_dir" \;
 done
 cd "$cur_dir"
